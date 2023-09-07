@@ -17,7 +17,6 @@ public class UsuarioDaoImpl implements IUsuarioDao{
     private EntityManager em;
 
     @Override
-    @Transactional(readOnly=true)
     public Optional<Usuario> getUsuarioById(UUID id) {
 
         String sql;
@@ -62,7 +61,6 @@ public class UsuarioDaoImpl implements IUsuarioDao{
     }
 
     @Override
-    @Transactional
     public Usuario saveUsuario(Usuario u) {
 
 //        Dividir data entre tabla "Usuarios" y "fonos" y enviar sendos em.persist

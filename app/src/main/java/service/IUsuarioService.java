@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface IUsuarioService {
 
-    Usuario saveUsuario(Usuario u);
     Optional<Usuario> getUsuarioById(UUID id);
+    void saveUsuario(Usuario u);
 
 }

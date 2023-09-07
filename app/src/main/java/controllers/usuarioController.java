@@ -4,23 +4,23 @@ import exceptions.InvalidTokenException;
 import exceptions.ValidationException;
 import models.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import request.UsuarioRequest;
 import response.UsuarioResponse;
-import service.UsuarioServiceImpl;
+import service.IUsuarioService;
 import utilities.TokenUtility;
 import utilities.Validador;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 import java.util.UUID;
-import org.springframework.http.HttpStatus;
 @RestController
 public class usuarioController {
 
     @Autowired
-    private UsuarioServiceImpl gestor;
+    private IUsuarioService gestor;
 
     @Autowired
     private Validador checker;
@@ -91,7 +91,7 @@ public class usuarioController {
         }
 
         Usuario nuevo = new Usuario(req.getEmail(), req.getPassword());
-        nuevo.setIsActive(true); // <-------------------------------------- CHECK ***
+        nuevo.setIsActive(true);
         nuevo.setLastLogin(null);
         nuevo.setName(req.getName());
         nuevo.setPhones (req.getUserPhones());
@@ -101,7 +101,7 @@ public class usuarioController {
         UsuarioResponse resp = new UsuarioResponse(nuevo.getEmail(), nuevo.getPassword());
         resp.setCreated(nuevo.getCreated());
         resp.setIsActive(nuevo.getIsActive());
-        resp.setLastLogin(null); // <--------------------------------------- CHECK ***
+        resp.setLastLogin(null);
         resp.setName(nuevo.getName());
         resp.setToken(newToken);
         resp.setPhoneNumbers(nuevo.getPhones());
