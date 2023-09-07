@@ -11,23 +11,14 @@ import java.util.UUID;
 
 public class Usuario implements Serializable {
     UUID userId;
-
     private String name;
     private String email;
-
     private String password;
-
     private Boolean isActive;
-
     private Date created;
-
     private Date lastLogin;
-
     private List<PhoneNumber> phones;
 
-    public Usuario() {
-
-    }
 
     public List<PhoneNumber> getPhones() {
         return phones;
@@ -61,6 +52,10 @@ public class Usuario implements Serializable {
         return password;
     }
 
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -89,6 +84,9 @@ public class Usuario implements Serializable {
         this.lastLogin = lastLogin;
     }
 
+    public Usuario() {
+
+    }
     public Usuario(String email, String password) {
         this.email = email;
         this.password = password;

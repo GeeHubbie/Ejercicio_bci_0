@@ -2,9 +2,9 @@ package models.entity;
 
 public class PhoneNumber
 {
-    private Long number;
-    private int cityCode;
     private String countryCode;
+    private int cityCode;
+    private Long number;
 
     public Long getNumber() {
         return number;

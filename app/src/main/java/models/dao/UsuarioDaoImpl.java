@@ -4,7 +4,6 @@ import models.entity.PhoneNumber;
 import models.entity.Usuario;
 import models.entity.Usuario_in_BD;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
@@ -44,7 +43,7 @@ public class UsuarioDaoImpl implements IUsuarioDao{
 
         // Dado que el usuario existe, ahora buscamos sus números telefónicos en tabla fonos
         try {
-            sql = "SELECT * FROM fonos WHERE fonos.userid = :param ";
+            sql = "SELECT countrycode, citycode, number FROM fonos WHERE fonos.userid = :param ";
             TypedQuery<PhoneNumber> tquery = (TypedQuery<PhoneNumber>) em.createQuery(sql, PhoneNumber.class);
             tquery.setParameter("param", id);
             List<PhoneNumber> tlfs = tquery.getResultList();
@@ -61,7 +60,7 @@ public class UsuarioDaoImpl implements IUsuarioDao{
     }
 
     @Override
-    public Usuario saveUsuario(Usuario u) {
+    public void saveUsuario(Usuario u) {
 
 //        Dividir data entre tabla "Usuarios" y "fonos" y enviar sendos em.persist
 
@@ -115,7 +114,6 @@ public class UsuarioDaoImpl implements IUsuarioDao{
                             }
                     ) ;
         }
-        return u;
 
     }
 }

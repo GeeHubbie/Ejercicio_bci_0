@@ -8,5 +8,5 @@ import java.util.UUID;
 public interface IUsuarioDao {
 
     Optional<Usuario> getUsuarioById(UUID id);
-    Usuario saveUsuario(Usuario u);
+    void saveUsuario(Usuario u);
 }
