@@ -4,24 +4,26 @@ import exceptions.ErrorMessage
 import models.entity.PhoneNumber
 import models.entity.Usuario
 import request.UsuarioRequest
+import utilities.TokenUtility
+import utilities.Validador
 
 class CrearUsuarioSpec {
 
-    void setup() {
+    def  setup() {
 
-        def validador = Stub(Validador.class)
-        def utility = Stub(TokenUtility.class)
+        Validador validador = Stub()
+        TokenUtility utility = Stub()
     }
 
     void 'Crear un usuario - Caso exitoso - (endpoint: /sign-up)'() {
 
         given: 'Crear usuario con información enviada, una vez validada'
 
-        def  ureq = new UsuarioRequest()
+        UsuarioRequest  ureq = new UsuarioRequest()
         ureq.email = 'user@bci.com'
         ureq.password = 'Password01'
         ureq.nombre = 'Pepe Cortisona'
-        def tlf = new PhoneNumber()
+        PhoneNumber tlf = new PhoneNumber()
         tlf.countryCode = '+56'
         tlf.cityCode = 9
         tlf.number = 71328555
@@ -31,7 +33,7 @@ class CrearUsuarioSpec {
 
         validador.emailValidator(u.email) >> true
         validador.passwordValidator(u.password) >> true
-        utility.getToken(nuevo) >> newToken
+
 
         when: 'se recibe un request para crear un usuario y los datos recibidos pasan reglas de validación'
 
@@ -55,7 +57,8 @@ class CrearUsuarioSpec {
         fono.number = 75251219
         nuevo.phones.add(fono)
 
-        Token newToken = utility.getToken(nuevo)
+        String newToken ="newToken"
+        utility.getToken(nuevo) >> newToken
         HttpStatus == 201 CREATED
     }
 

@@ -12,7 +12,6 @@ import java.util.UUID;
 public class Usuario_in_BD implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     UUID userId;
 
     private String name;
@@ -84,6 +83,10 @@ public class Usuario_in_BD implements Serializable {
 
     public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
     public Usuario_in_BD(String email, String password) {

@@ -6,6 +6,7 @@ import models.entity.Usuario
 import spock.lang.Specification
 import utilities.TokenUtility
 import service.IUsuarioService
+import spock.mock.MockingApi
 
 class ConsultarUsuarioSpec extends Specification{
 
@@ -13,7 +14,7 @@ class ConsultarUsuarioSpec extends Specification{
 
         def userId = "45bcf2ac-f68b-4a85-9d47-f87ec72ad10a"
         def token = 'dummyToken'
-        def utility = Stub(TokenUtility.class)
+
         def nuevo = new Usuario()
         nuevo.userId = UUID.fromString(userId)
         nuevo.email = 'user@dominio.com'
@@ -28,9 +29,9 @@ class ConsultarUsuarioSpec extends Specification{
         nuevo.phones.add(tlf)
         tlf.number = 75251219
         nuevo.phones.add(tlf)
-
-        def servicio = Stub(IUsuarioService.class)
-        def optionalUser = Optional<Usuario>
+        TokenUtility utility = Stub()
+        IUsuarioService servicio = Stub()
+        Optional<Usuario> optionalUser
     }
 
     def 'Consultar un usuario por ID - Caso exitoso'() {

@@ -91,6 +91,7 @@ public class usuarioController {
         }
 
         Usuario nuevo = new Usuario(req.getEmail(), req.getPassword());
+        nuevo.setUserId(UUID.randomUUID());
         nuevo.setIsActive(true);
         nuevo.setLastLogin(null);
         nuevo.setName(req.getName());

@@ -68,25 +68,13 @@ public class UsuarioDaoImpl implements IUsuarioDao{
         userBD.setCreated(u.getCreated());
         userBD.setIsActive(u.getIsActive());
         userBD.setLastLogin(u.getLastLogin());
+        userBD.setUserId(u.getUserId());
 
         try {
             em.persist(userBD);
         } catch (EntityExistsException ex) {
-            // asumimos que se quiere actualizar algún valor del usuario
-            String sql = "UPDATE usuarios SET email = :email, password = :pwd, "
-                        + "created = :created, isactive = :isactive, lastlogin = :lastlogin";
-            Query q = em.createQuery(sql);
-            q.setParameter("email", u.getEmail());
-            q.setParameter("pwd", u.getPassword());
-            q.setParameter("created", u.getCreated());
-            q.setParameter("isactive", u.getIsActive());
-            q.setParameter("lastlogin", u.getLastLogin());
-
-            try {
-                q.executeUpdate();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            // esto no debería pasar por las características de UUID
+            throw new RuntimeException(ex);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
