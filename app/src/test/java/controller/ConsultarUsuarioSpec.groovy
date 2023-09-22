@@ -1,11 +1,11 @@
 package controller
 
-import models.entity.PhoneNumber
-import models.entity.Usuario
+import main.models.entity.PhoneNumber
+import main.models.entity.Usuario
 import org.springframework.http.HttpStatus
-import service.UsuarioServiceImpl
+import main.service.UsuarioServiceImpl
 import spock.lang.Specification
-import utilities.TokenUtility
+import main.utilities.TokenUtility
 
 class ConsultarUsuarioSpec extends Specification{
 

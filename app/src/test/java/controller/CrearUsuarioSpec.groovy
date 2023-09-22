@@ -1,12 +1,12 @@
 package controller
 
-import exceptions.ErrorMessage
-import models.entity.PhoneNumber
-import models.entity.Usuario
-import request.UsuarioRequest
+import main.exceptions.ErrorMessage
+import main.models.entity.PhoneNumber
+import main.models.entity.Usuario
+import main.request.UsuarioRequest
 import spock.lang.Specification
-import utilities.TokenUtility
-import utilities.Validador
+import main.utilities.TokenUtility
+import main.utilities.Validador
 
 class CrearUsuarioSpec extends Specification{
 

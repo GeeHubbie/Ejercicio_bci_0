@@ -1,5 +1,6 @@
 package utilities
 
+import main.utilities.PasswordEncryptor
 import spock.lang.Specification
 
 class PasswordEncryptorSpec extends Specification{
@@ -15,6 +16,4 @@ class PasswordEncryptorSpec extends Specification{
         then: 'el valor obtenido es igual al original'
             original == devuelta
     }
-
-
 }

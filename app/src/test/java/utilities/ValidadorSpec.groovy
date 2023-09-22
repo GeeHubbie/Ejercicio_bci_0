@@ -1,5 +1,6 @@
 package utilities
 
+import main.utilities.Validador
 import spock.lang.Specification
 import spock.lang.Unroll
 import sun.security.util.Password
@@ -10,7 +11,7 @@ class ValidadorSpec extends Specification{
     def 'El resultado de ejecutar emailValidator sobre el email: #inputEmail es: #resultadoEsperado'() {
 
         given: 'Dada una dirección de correo, evaluar si cumple las reglas de validación definidas'
-            Validador juez = new Validador()
+        Validador juez = new Validador()
             Boolean resultado
         when: 'se evalúa la dirección de correo recibida como entrada'
              resultado = juez.emailValidator(inputEmail)
